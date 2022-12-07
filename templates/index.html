@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %} Recommend by Genre {% endblock %}
+
+{% block content %}
+<br/>
+<h1 align="center">Select your favorite genre</h1>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select genre
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="/?genre=Action">Action</a>
+            <a class="dropdown-item" href="/?genre=Adventure">Adventure</a>
+            <a class="dropdown-item" href="/?genre=Animation">Animation</a>
+            <a class="dropdown-item" href="/?genre=Children's">Children's</a>
+            <a class="dropdown-item" href="/?genre=Comedy">Comedy</a>
+            <a class="dropdown-item" href="/?genre=Crime">Crime</a>
+            <a class="dropdown-item" href="/?genre=Documentary">Documentary</a>
+            <a class="dropdown-item" href="/?genre=Drama">Drama</a>
+            <a class="dropdown-item" href="/?genre=Fantasy">Fantasy</a>
+            <a class="dropdown-item" href="/?genre=Film-Noir">Film-Noir</a>
+            <a class="dropdown-item" href="/?genre=Horror">Horror</a>
+            <a class="dropdown-item" href="/?genre=Musical">Musical</a>
+            <a class="dropdown-item" href="/?genre=Mystery">Mystery</a>
+            <a class="dropdown-item" href="/?genre=Romance">Romance</a>
+            <a class="dropdown-item" href="/?genre=Sci-Fi">Sci-Fi</a>
+            <a class="dropdown-item" href="/?genre=Thriller">Thriller</a>
+            <a class="dropdown-item" href="/?genre=War">War</a>
+            <a class="dropdown-item" href="/?genre=Western">Western</a>
+        </div>
+    </div>
+
+<br/>
+
+<p> Selected genre: {{ genre }} </p>
+<br/>
+
+{% if genre != None %}
+<h3 align="center"> Your recommendations</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Ranking</th>
+      <th scope="col">Movie Title</th>
+      <th scope="col">Genre</th>
+      <th scope="col">Average Rating</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for i in range(0, movies_len)%}
+        <tr>
+            <th scope="row">{{i + 1}}</th>
+            <td>{{movies[i]}}</td>
+            <td>{{movie_genres[i]}}</td>
+            <td>{{ratings[i]}}</td>
+        </tr>
+    {%endfor%}
+  </tbody>
+</table>
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %} Recommend by Rating {% endblock %}
+
+{% block content %}
+<br/>
+<h1 align="center">Rate as many movies as you can</h1>
+<br/>
+<form method="POST">
+    <button type="submit" class="btn btn-primary">Get recommendation</button>
+    <p> Note that it will take at least several seconds to compute the movie recommendations.</p>
+    <p> Please don't spam click the button as it could further delay the program. </p>
+    <br/>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Movie index</th>
+            <th scope="col">Movie Title</th>
+            <th scope="col">Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        {%for i in range(0, movies_len)%}
+            <tr>
+                <th scope="row">{{movie_indices[i]}}</th>
+                <td>{{movie_names[i]}}</td>
+                <td>
+                    <div class="rating">
+                      <input type="radio" name="{{movie_indices[i]}}" value="5" id="{{movie_indices[i]|string + '_5'}}}"><label for="{{movie_indices[i]|string + '_5'}}}">☆</label>
+                      <input type="radio" name="{{movie_indices[i]}}" value="4" id="{{movie_indices[i]|string + '_4'}}}"><label for="{{movie_indices[i]|string + '_4'}}}">☆</label>
+                      <input type="radio" name="{{movie_indices[i]}}" value="3" id="{{movie_indices[i]|string + '_3'}}}"><label for="{{movie_indices[i]|string + '_3'}}}">☆</label>
+                      <input type="radio" name="{{movie_indices[i]}}" value="2" id="{{movie_indices[i]|string + '_2'}}}"><label for="{{movie_indices[i]|string + '_2'}}}">☆</label>
+                      <input type="radio" name="{{movie_indices[i]}}" value="1" id="{{movie_indices[i]|string + '_1'}}}"><label for="{{movie_indices[i]|string + '_1'}}}">☆</label>
+                    </div>
+                </td>
+            </tr>
+        {%endfor%}
+    </tbody>
+    </table>
+    <br />
+    <button type="submit" class="btn btn-primary">Get recommendation</button>
+</form>
+{% endblock %}

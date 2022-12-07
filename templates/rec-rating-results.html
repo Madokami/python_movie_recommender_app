@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Recommend by Genre {% endblock %}
+
+{% block content %}
+<br/>
+
+{% if movies_len == 0 %}
+<h1 align="center">Not enough information. Please go back and rate at least 2 movies with different ratings</h1>
+{% else %}
+<h1 align="center">Your recommendations</h1>
+{% endif %}
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Ranking</th>
+      <th scope="col">Movie Title</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%for i in range(0, movies_len)%}
+        <tr>
+            <th scope="row">{{i + 1}}</th>
+            <td>{{movies[i]}}</td>
+        </tr>
+    {%endfor%}
+  </tbody>
+</table>
+{% endblock %}
